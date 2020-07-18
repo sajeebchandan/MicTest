@@ -4,10 +4,10 @@
 #define MyAppName "Mic Test"
 #define MyAppVersion "1.0.0.0"
 #define MyAppPublisher "Sajeeb Chandan Saha"
-#define MyAppURL "https://github.com/sajeebchandan/MicTest"
 #define MyAppExeName "Mic Test.exe"
-#define MyAppSupportURL "https://github.com/sajeebchandan/Podcaster-Releases"
-#define MyAppUpdatesURL "https://github.com/sajeebchandan/Podcaster-Releases/releases/latest"
+#define MyAppPublisherURL "https://www.fiverr.com/sajeeb_chandan"
+#define MyAppSupportURL "https://github.com/sajeebchandan/MicTest"
+#define MyAppUpdatesURL "https://github.com/sajeebchandan/MicTest/releases/latest"
 
 [Setup]
 ; NOTE: The value of AppId uniquely identifies this application. Do not use the same AppId value in installers for other applications.
@@ -17,9 +17,9 @@ AppName={#MyAppName}
 AppVersion={#MyAppVersion}
 ;AppVerName={#MyAppName} {#MyAppVersion}
 AppPublisher={#MyAppPublisher}
-AppPublisherURL={#MyAppURL}
-AppSupportURL={#MyAppURL}
-AppUpdatesURL={#MyAppURL}
+AppPublisherURL={#MyAppPublisherURL}
+AppSupportURL={#MyAppSupportURL}
+AppUpdatesURL={#MyAppUpdatesURL}
 DefaultDirName={autopf}\{#MyAppName}
 DisableDirPage=yes
 DisableProgramGroupPage=yes
@@ -31,7 +31,7 @@ InfoAfterFile=F:\IDEs\Visual Studio 2019\Mic Test\Mic Test\Mic Test_install_afte
 ;PrivilegesRequired=lowest
 PrivilegesRequiredOverridesAllowed=dialog
 OutputDir=F:\IDEs\Visual Studio 2019\Mic Test
-OutputBaseFilename=Mic Test_Setup
+OutputBaseFilename=Mic_Test_Setup
 SetupIconFile=F:\IDEs\Visual Studio 2019\Mic Test\Mic Test\microphone__5__MjP_icon.ico
 Compression=lzma/ultra64
 SolidCompression=yes
