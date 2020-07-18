@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("Mic Test")]
-[assembly: AssemblyDescription("A small utility tool to check and test you computer's connected microphones along with loopback capture devices.")]
+[assembly: AssemblyDescription("A small utility tool to check and test your computer's connected microphones along with loopback capture devices without saving the audio with real-time feedback.")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Soul Engineers'")]
 [assembly: AssemblyProduct("Mic Test")]

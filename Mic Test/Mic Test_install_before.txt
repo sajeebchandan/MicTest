@@ -1,1 +1,1 @@
-﻿Mic-Test is a small utility tool to check and test you computer's connected microphones along with loopback capture devices.
+﻿Mic-Test is a small utility tool to check and test your computer's connected microphones along with loopback capture devices without saving the audio with real-time audio feedback.
