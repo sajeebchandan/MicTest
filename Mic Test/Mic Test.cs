@@ -20,7 +20,7 @@ namespace Mic_Test
 {
     public partial class MicTest : Form
     {
-        private const CaptureMode captureMode = CaptureMode.Capture;
+        private CaptureMode captureMode = CaptureMode.Capture;
         private readonly GraphVisualization _graphVisualization = new GraphVisualization();
         private float l = 0;
         private float r = 0;
@@ -88,7 +88,7 @@ namespace Mic_Test
                     if (captureMode == CaptureMode.Capture)
                         _soundIn = new WasapiCapture();
                     else
-                        _soundIn = new WasapiLoopbackCapture();
+                        _soundIn = new WasapiLoopbackCapture(100, new WaveFormat(48000, 24, 2));
 
                     _soundIn.Device = SelectedDevice;
                     _soundIn.Initialize();
@@ -102,32 +102,55 @@ namespace Mic_Test
                     singleBlockNotificationStream.SingleBlockRead += SingleBlockNotificationStreamOnSingleBlockRead;
 
                     _soundIn.Start();
-                    _soundOut = new WasapiOut();
-                    _soundOut.Initialize(_finalSource);
-                    _soundOut.Play();
+                    if (captureMode == CaptureMode.Capture)
+                    {
+                        _soundOut = new WasapiOut();
+                        _soundOut.Initialize(_finalSource);
+                        _soundOut.Play();
+                    }
+                    else
+                    {
+                        byte[] buffer = new byte[_finalSource.WaveFormat.BytesPerSecond / 2];
+                        soundInSource.DataAvailable += (s, ex) =>
+                        {
+                            int read;
+                            while ((read = _finalSource.Read(buffer, 0, buffer.Length)) > 0)
+                            {
+
+                            }
+                        };
+                    }
                     buttonCheck.Enabled = true;
                     buttonRefreshMicro0phone.Enabled = false;
                     listViewSources.Enabled = false;
+                    checkBoxLoopback.Enabled = false;
                     buttonCheck.Text = "Stop";
                 }
                 else
                 {
                     buttonCheck.Enabled = false;
-                    _soundOut.Stop();
-                    _soundOut.Dispose();
-                    _soundIn.Stop();
-                    _soundIn.Dispose();
-                    _soundOut = null;
-                    _soundIn = null;
+                    if (_soundOut != null)
+                    {
+                        _soundOut.Stop();
+                        _soundOut.Dispose();
+                        _soundOut = null;
+                    }
+                    if (_soundIn != null)
+                    {
+                        _soundIn.Stop();
+                        _soundIn.Dispose();
+                        _soundIn = null;
+                    }
                     buttonCheck.Enabled = true;
                     listViewSources.Enabled = true;
                     buttonRefreshMicro0phone.Enabled = true;
+                    checkBoxLoopback.Enabled = true;
                     buttonCheck.Text = "Start";
                 }
             }
             else
             {
-                MessageBox.Show("Reload & Select a Microphone");
+                MessageBox.Show("Reload & Select a Device");
             }
         }
 
@@ -153,6 +176,11 @@ namespace Mic_Test
 
         private void timerGraph_Tick(object sender, EventArgs e)
         {
+            if (_soundIn == null)
+            {
+                progressBarL.Value = 0;
+                progressBarR.Value = 0;
+            }
             progressBarL.Value = Math.Abs(Convert.ToInt32(l * 100));
             progressBarR.Value = Math.Abs(Convert.ToInt32(r * 100));
             var image = pictureBoxGraphVisualizer.Image;
@@ -174,6 +202,22 @@ namespace Mic_Test
                 _soundIn.Stop();
                 _soundIn.Dispose();
                 _soundIn = null;
+            }
+        }
+
+        private void checkBoxLoopback_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxLoopback.Checked)
+            {
+                captureMode = CaptureMode.LoopbackCapture;
+                RefreshDevices();
+                this.TopMost = true;
+            }
+            else
+            {
+                captureMode = CaptureMode.Capture;
+                RefreshDevices();
+                this.TopMost = false;
             }
         }
     }
