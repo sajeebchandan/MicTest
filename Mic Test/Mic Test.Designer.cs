@@ -37,6 +37,8 @@
             this.buttonRefreshMicro0phone = new System.Windows.Forms.Button();
             this.buttonCheck = new System.Windows.Forms.Button();
             this.timerGraph = new System.Windows.Forms.Timer(this.components);
+            this.progressBarL = new System.Windows.Forms.ProgressBar();
+            this.progressBarR = new System.Windows.Forms.ProgressBar();
             this.pictureBoxGraphVisualizer = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxGraphVisualizer)).BeginInit();
@@ -58,7 +60,7 @@
             this.listViewSources.MultiSelect = false;
             this.listViewSources.Name = "listViewSources";
             this.listViewSources.ShowItemToolTips = true;
-            this.listViewSources.Size = new System.Drawing.Size(364, 103);
+            this.listViewSources.Size = new System.Drawing.Size(255, 87);
             this.listViewSources.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listViewSources.TabIndex = 0;
             this.listViewSources.UseCompatibleStateImageBehavior = false;
@@ -68,7 +70,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Device";
-            this.columnHeader1.Width = 294;
+            this.columnHeader1.Width = 185;
             // 
             // columnHeader2
             // 
@@ -83,7 +85,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(15, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(377, 156);
+            this.groupBox1.Size = new System.Drawing.Size(268, 138);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Microphone";
@@ -99,7 +101,7 @@
             this.buttonRefreshMicro0phone.ForeColor = System.Drawing.Color.Black;
             this.buttonRefreshMicro0phone.Location = new System.Drawing.Point(7, 20);
             this.buttonRefreshMicro0phone.Name = "buttonRefreshMicro0phone";
-            this.buttonRefreshMicro0phone.Size = new System.Drawing.Size(364, 20);
+            this.buttonRefreshMicro0phone.Size = new System.Drawing.Size(255, 20);
             this.buttonRefreshMicro0phone.TabIndex = 5;
             this.buttonRefreshMicro0phone.Text = "Refresh Microphone List";
             this.buttonRefreshMicro0phone.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -115,9 +117,9 @@
             this.buttonCheck.FlatAppearance.BorderSize = 0;
             this.buttonCheck.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonCheck.ForeColor = System.Drawing.Color.Black;
-            this.buttonCheck.Location = new System.Drawing.Point(15, 177);
+            this.buttonCheck.Location = new System.Drawing.Point(15, 158);
             this.buttonCheck.Name = "buttonCheck";
-            this.buttonCheck.Size = new System.Drawing.Size(377, 29);
+            this.buttonCheck.Size = new System.Drawing.Size(268, 29);
             this.buttonCheck.TabIndex = 3;
             this.buttonCheck.Text = "Start";
             this.buttonCheck.UseVisualStyleBackColor = false;
@@ -129,12 +131,30 @@
             this.timerGraph.Interval = 1;
             this.timerGraph.Tick += new System.EventHandler(this.timerGraph_Tick);
             // 
+            // progressBarL
+            // 
+            this.progressBarL.BackColor = System.Drawing.Color.White;
+            this.progressBarL.Location = new System.Drawing.Point(15, 263);
+            this.progressBarL.Name = "progressBarL";
+            this.progressBarL.Size = new System.Drawing.Size(131, 2);
+            this.progressBarL.Step = 1;
+            this.progressBarL.TabIndex = 6;
+            // 
+            // progressBarR
+            // 
+            this.progressBarR.BackColor = System.Drawing.Color.White;
+            this.progressBarR.Location = new System.Drawing.Point(152, 263);
+            this.progressBarR.Name = "progressBarR";
+            this.progressBarR.Size = new System.Drawing.Size(131, 2);
+            this.progressBarR.Step = 1;
+            this.progressBarR.TabIndex = 7;
+            // 
             // pictureBoxGraphVisualizer
             // 
             this.pictureBoxGraphVisualizer.BackColor = System.Drawing.Color.White;
-            this.pictureBoxGraphVisualizer.Location = new System.Drawing.Point(15, 212);
+            this.pictureBoxGraphVisualizer.Location = new System.Drawing.Point(15, 193);
             this.pictureBoxGraphVisualizer.Name = "pictureBoxGraphVisualizer";
-            this.pictureBoxGraphVisualizer.Size = new System.Drawing.Size(377, 156);
+            this.pictureBoxGraphVisualizer.Size = new System.Drawing.Size(268, 66);
             this.pictureBoxGraphVisualizer.TabIndex = 4;
             this.pictureBoxGraphVisualizer.TabStop = false;
             // 
@@ -144,7 +164,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(404, 380);
+            this.ClientSize = new System.Drawing.Size(295, 272);
+            this.Controls.Add(this.progressBarR);
+            this.Controls.Add(this.progressBarL);
             this.Controls.Add(this.pictureBoxGraphVisualizer);
             this.Controls.Add(this.buttonCheck);
             this.Controls.Add(this.groupBox1);
@@ -154,6 +176,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "MicTest";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Mic Test";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MicTest_FormClosing);
             this.groupBox1.ResumeLayout(false);
@@ -167,11 +190,13 @@
         private System.Windows.Forms.ListView listViewSources;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Button buttonCheck;
-        private System.Windows.Forms.PictureBox pictureBoxGraphVisualizer;
         private System.Windows.Forms.Button buttonRefreshMicro0phone;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.Timer timerGraph;
+        private System.Windows.Forms.ProgressBar progressBarL;
+        private System.Windows.Forms.ProgressBar progressBarR;
+        private System.Windows.Forms.PictureBox pictureBoxGraphVisualizer;
     }
 }
 

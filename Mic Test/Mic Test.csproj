@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -33,7 +34,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>microphone__4__Cov_icon.ico</ApplicationIcon>
+    <ApplicationIcon>microphone__5__MjP_icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CSCore, Version=1.2.1.2, Culture=neutral, PublicKeyToken=5a08f2b6f4415dea, processorArchitecture=MSIL">
@@ -89,7 +90,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="microphone__4__Cov_icon.ico" />
+    <Content Include="Mic Test.iss" />
+    <Content Include="Mic Test_install_after.txt" />
+    <Content Include="Mic Test_install_before.txt" />
+    <Content Include="microphone__5__MjP_icon.ico" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />

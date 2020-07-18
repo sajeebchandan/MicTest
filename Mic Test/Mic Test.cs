@@ -22,6 +22,8 @@ namespace Mic_Test
     {
         private const CaptureMode captureMode = CaptureMode.Capture;
         private readonly GraphVisualization _graphVisualization = new GraphVisualization();
+        private float l = 0;
+        private float r = 0;
         private MMDevice _selectedDevice;
         private WasapiCapture _soundIn;
         private IWaveSource _finalSource;
@@ -104,8 +106,9 @@ namespace Mic_Test
                     _soundOut.Initialize(_finalSource);
                     _soundOut.Play();
                     buttonCheck.Enabled = true;
-                    buttonCheck.Text = "Stop";
+                    buttonRefreshMicro0phone.Enabled = false;
                     listViewSources.Enabled = false;
+                    buttonCheck.Text = "Stop";
                 }
                 else
                 {
@@ -118,6 +121,7 @@ namespace Mic_Test
                     _soundIn = null;
                     buttonCheck.Enabled = true;
                     listViewSources.Enabled = true;
+                    buttonRefreshMicro0phone.Enabled = true;
                     buttonCheck.Text = "Start";
                 }
             }
@@ -129,6 +133,8 @@ namespace Mic_Test
 
         private void SingleBlockNotificationStreamOnSingleBlockRead(object sender, SingleBlockReadEventArgs e)
         {
+            l = e.Left;
+            r = e.Right;
             _graphVisualization.AddSamples(e.Left, e.Right);
         }
 
@@ -147,6 +153,8 @@ namespace Mic_Test
 
         private void timerGraph_Tick(object sender, EventArgs e)
         {
+            progressBarL.Value = Math.Abs(Convert.ToInt32(l * 100));
+            progressBarR.Value = Math.Abs(Convert.ToInt32(r * 100));
             var image = pictureBoxGraphVisualizer.Image;
             pictureBoxGraphVisualizer.Image = _graphVisualization.Draw(pictureBoxGraphVisualizer.Width, pictureBoxGraphVisualizer.Height);
             if (image != null)
