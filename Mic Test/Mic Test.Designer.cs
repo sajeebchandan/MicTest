@@ -61,7 +61,7 @@
             this.listViewSources.MultiSelect = false;
             this.listViewSources.Name = "listViewSources";
             this.listViewSources.ShowItemToolTips = true;
-            this.listViewSources.Size = new System.Drawing.Size(255, 87);
+            this.listViewSources.Size = new System.Drawing.Size(460, 87);
             this.listViewSources.Sorting = System.Windows.Forms.SortOrder.Ascending;
             this.listViewSources.TabIndex = 0;
             this.listViewSources.UseCompatibleStateImageBehavior = false;
@@ -71,7 +71,7 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "Device";
-            this.columnHeader1.Width = 185;
+            this.columnHeader1.Width = 370;
             // 
             // columnHeader2
             // 
@@ -86,7 +86,7 @@
             this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(12, 14);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(268, 138);
+            this.groupBox1.Size = new System.Drawing.Size(473, 138);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Select Device";
@@ -102,7 +102,7 @@
             this.buttonRefreshMicro0phone.ForeColor = System.Drawing.Color.Black;
             this.buttonRefreshMicro0phone.Location = new System.Drawing.Point(7, 20);
             this.buttonRefreshMicro0phone.Name = "buttonRefreshMicro0phone";
-            this.buttonRefreshMicro0phone.Size = new System.Drawing.Size(255, 20);
+            this.buttonRefreshMicro0phone.Size = new System.Drawing.Size(460, 20);
             this.buttonRefreshMicro0phone.TabIndex = 5;
             this.buttonRefreshMicro0phone.Text = "Refresh Device List";
             this.buttonRefreshMicro0phone.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -120,7 +120,7 @@
             this.buttonCheck.ForeColor = System.Drawing.Color.Black;
             this.buttonCheck.Location = new System.Drawing.Point(12, 158);
             this.buttonCheck.Name = "buttonCheck";
-            this.buttonCheck.Size = new System.Drawing.Size(268, 29);
+            this.buttonCheck.Size = new System.Drawing.Size(473, 29);
             this.buttonCheck.TabIndex = 3;
             this.buttonCheck.Text = "Start";
             this.buttonCheck.UseVisualStyleBackColor = false;
@@ -135,18 +135,18 @@
             // progressBarL
             // 
             this.progressBarL.BackColor = System.Drawing.Color.White;
-            this.progressBarL.Location = new System.Drawing.Point(12, 263);
+            this.progressBarL.Location = new System.Drawing.Point(12, 261);
             this.progressBarL.Name = "progressBarL";
-            this.progressBarL.Size = new System.Drawing.Size(131, 2);
+            this.progressBarL.Size = new System.Drawing.Size(235, 2);
             this.progressBarL.Step = 1;
             this.progressBarL.TabIndex = 6;
             // 
             // progressBarR
             // 
             this.progressBarR.BackColor = System.Drawing.Color.White;
-            this.progressBarR.Location = new System.Drawing.Point(149, 263);
+            this.progressBarR.Location = new System.Drawing.Point(250, 261);
             this.progressBarR.Name = "progressBarR";
-            this.progressBarR.Size = new System.Drawing.Size(131, 2);
+            this.progressBarR.Size = new System.Drawing.Size(235, 2);
             this.progressBarR.Step = 1;
             this.progressBarR.TabIndex = 7;
             // 
@@ -155,7 +155,7 @@
             this.pictureBoxGraphVisualizer.BackColor = System.Drawing.Color.White;
             this.pictureBoxGraphVisualizer.Location = new System.Drawing.Point(12, 191);
             this.pictureBoxGraphVisualizer.Name = "pictureBoxGraphVisualizer";
-            this.pictureBoxGraphVisualizer.Size = new System.Drawing.Size(268, 66);
+            this.pictureBoxGraphVisualizer.Size = new System.Drawing.Size(473, 66);
             this.pictureBoxGraphVisualizer.TabIndex = 4;
             this.pictureBoxGraphVisualizer.TabStop = false;
             // 
@@ -164,7 +164,7 @@
             this.checkBoxLoopback.Cursor = System.Windows.Forms.Cursors.Hand;
             this.checkBoxLoopback.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.checkBoxLoopback.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.checkBoxLoopback.Location = new System.Drawing.Point(214, 2);
+            this.checkBoxLoopback.Location = new System.Drawing.Point(419, 2);
             this.checkBoxLoopback.Name = "checkBoxLoopback";
             this.checkBoxLoopback.Size = new System.Drawing.Size(76, 17);
             this.checkBoxLoopback.TabIndex = 8;
@@ -179,7 +179,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ClientSize = new System.Drawing.Size(292, 269);
+            this.ClientSize = new System.Drawing.Size(497, 269);
             this.Controls.Add(this.checkBoxLoopback);
             this.Controls.Add(this.progressBarR);
             this.Controls.Add(this.progressBarL);

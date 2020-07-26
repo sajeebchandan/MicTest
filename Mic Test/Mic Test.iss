@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Mic Test"
-#define MyAppVersion "1.0.0.0"
+#define MyAppVersion "2.0.0.0"
 #define MyAppPublisher "Sajeeb Chandan Saha"
 #define MyAppExeName "Mic Test.exe"
 #define MyAppPublisherURL "https://www.fiverr.com/sajeeb_chandan"

@@ -53,13 +53,17 @@ namespace Mic_Test
             {
                 foreach (var device in deviceCollection)
                 {
-                    var deviceFormat = WaveFormatFromBlob(device.PropertyStore[
-                        new PropertyKey(new Guid(0xf19f064d, 0x82c, 0x4e27, 0xbc, 0x73, 0x68, 0x82, 0xa1, 0xbb, 0x8e, 0x4c), 0)].BlobValue);
+                    if (captureMode == CaptureMode.LoopbackCapture ? device.DeviceFormat.Channels > 1 : true)
+                    {
+                        var deviceFormat = WaveFormatFromBlob(device.PropertyStore[
+            new PropertyKey(new Guid(0xf19f064d, 0x82c, 0x4e27, 0xbc, 0x73, 0x68, 0x82, 0xa1, 0xbb, 0x8e, 0x4c), 0)].BlobValue);
 
-                    var item = new ListViewItem(device.FriendlyName) { Tag = device };
-                    item.SubItems.Add(deviceFormat.Channels.ToString(CultureInfo.InvariantCulture));
+                        var item = new ListViewItem(device.FriendlyName) { Tag = device };
+                        item.SubItems.Add(deviceFormat.Channels.ToString(CultureInfo.InvariantCulture));
 
-                    listViewSources.Items.Add(item);
+                        listViewSources.Items.Add(item);
+                    }
+
                 }
             }
         }
@@ -93,10 +97,10 @@ namespace Mic_Test
                     _soundIn.Device = SelectedDevice;
                     _soundIn.Initialize();
 
-                    var soundInSource = new SoundInSource(_soundIn);
-                    //{ FillWithZeros = true };            
+                    var soundInSource = new SoundInSource(_soundIn)
+                    { FillWithZeros = SelectedDevice.DeviceFormat.Channels <= 1 ? true : false };
 
-                    var singleBlockNotificationStream = new SingleBlockNotificationStream(soundInSource.ToSampleSource());
+                    var singleBlockNotificationStream = new SingleBlockNotificationStream(soundInSource.ToStereo().ToSampleSource());
                     _finalSource = singleBlockNotificationStream.ToWaveSource();
 
                     singleBlockNotificationStream.SingleBlockRead += SingleBlockNotificationStreamOnSingleBlockRead;
@@ -104,7 +108,17 @@ namespace Mic_Test
                     _soundIn.Start();
                     if (captureMode == CaptureMode.Capture)
                     {
-                        _soundOut = new WasapiOut();
+                        if (SelectedDevice.DeviceFormat.Channels <= 1)
+                        {
+                            _soundOut = new WasapiOut()
+                            {
+                                Device = new MMDeviceEnumerator().GetDefaultAudioEndpoint(DataFlow.Render, Role.Communications)
+                            };
+                        }
+                        else
+                        {
+                            _soundOut = new WasapiOut();
+                        }
                         _soundOut.Initialize(_finalSource);
                         _soundOut.Play();
                     }
