@@ -1,7 +1,7 @@
 # Mic Test
 
 # Latest Release
-## [Mic Test v1.0.0.0](https://github.com/sajeebchandan/MicTest/releases/latest)
+## [Mic Test v2.0.0.0](https://github.com/sajeebchandan/MicTest/releases/latest)
 
 ![image](https://user-images.githubusercontent.com/34353160/87855828-ae6fba80-c93c-11ea-9398-ca0c2e1507d5.png)
 
